@@ -1,15 +1,15 @@
+from typing import ContextManager
 from django.http import HttpResponse
 import datetime
+from django.template import Template, Context
 
 def saludo(request): #primera vista
-    documento="""<html>
-    <body>
-    <h1>
-    Hola alumnos, esta es nuestra primera vista con Django
-    </h1>
-    </body>
-    </html>
-    """
+    doc_externo=open("D:/aprendizaje extra/python_django_principiante/Python_Django/pildorasinformaticas/Proyecto1/Proyecto1/template/index.html")
+    plt=Template(doc_externo.read())
+    doc_externo.close()
+    ctx=Context() #contexto
+    #renderizar documento
+    documento=plt.render(ctx)
     return HttpResponse(documento)
 
 def despedida(request):
