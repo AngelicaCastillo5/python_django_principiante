@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
 from django.template import loader 
+from django.shortcuts import render
 class persona(object):
     def __init__(self,nombre,apellido):
         self.nombre=nombre
@@ -11,10 +12,10 @@ class persona(object):
 
 def saludo(request): #primera vista
     p1=persona("Profesor Juan","Diaz")
-    nombre="Juan"
-    apellido="Diaz"
+    #nombre="Juan"
+    #apellido="Diaz"
     temas=["Plantillas","Modelos","Formularios","Vistas","Despliegue"] #contexto
-    tema2=[]
+    #tema2=[]
     #renderizar documento
     ahora=datetime.datetime.now()
     #doc_externo=open("D:/aprendizaje extra/python_django_principiante/Python_Django/pildorasinformaticas/Proyecto1/Proyecto1/templates/index.html")
@@ -24,8 +25,10 @@ def saludo(request): #primera vista
     #ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":ahora,"temas":temas})
     #documento=plt.render(ctx)
     diccionario={"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":ahora,"temas":temas}
-    documento=doc_externo.render(diccionario)
-    return HttpResponse(documento)
+    #documento=doc_externo.render(diccionario)
+    #return HttpResponse(documento)
+    return render(request,"index.html", diccionario)#el ultimo campo es para pasar datos como un diccionario 
+
 
 def despedida(request):
     return HttpResponse("Hasta luego alumnos de django")

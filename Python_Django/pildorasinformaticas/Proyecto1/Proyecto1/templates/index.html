@@ -1,11 +1,16 @@
 <html>
-  <body>
+
+<body>
+    {% include "barra.html" %}
+    <!--{%comment %} donde quiera integrar una barra, se integra con esta linea {%endcomment%} -->
+
+
+
     <h1 style="color: red">
-      Hola alumnos, esta es nuestra primera vista con Django, desde una
-      plantilla
+        Hola alumnos, esta es nuestra primera vista con Django, desde una plantilla
     </h1>
     {% if apellido_persona == "Diaz" %}
-        <p>El curso lo imparte el profesor titular</p>
+    <p>El curso lo imparte el profesor titular</p>
     {% else %}
     <p> El curso lo realiza el profesor suplente </p>
     {% endif %}
@@ -14,16 +19,15 @@
     <p><strong>Temas del curso:</strong></p>
     <p>
         <ul>
-            {% comment %} esta parte funciona como un forEach de js  {% endcomment %}
-            {% if temas %}
-                {% for i in temas %} 
-                    <li> {{i|first|lower}} </li>
-                {% endfor %}
-            {% else %}
-                <p>No hay elemtos que mostrar porque la lista esta vacia</p>
+            <!-- {% comment %} esta parte funciona como un forEach de js {% endcomment %} -->
+            {% if temas %} {% for i in temas %}
+            <li> {{i|first|lower}} </li>
+            {% endfor %} {% else %}
+            <p>No hay elemtos que mostrar porque la lista esta vacia</p>
             {% endif %}
-    </ul>
-        </p>
+        </ul>
+    </p>
 
-  </body>
+</body>
+
 </html>
