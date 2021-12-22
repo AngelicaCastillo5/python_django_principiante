@@ -13,12 +13,14 @@ def saludo(request): #primera vista
     p1=persona("Profesor Juan","Diaz")
     nombre="Juan"
     apellido="Diaz"
+    temas=["Plantillas","Modelos","Formularios","Vistas","Despliegue"] #contexto
+    tema2=[]
+    #renderizar documento
     ahora=datetime.datetime.now()
     doc_externo=open("D:/aprendizaje extra/python_django_principiante/Python_Django/pildorasinformaticas/Proyecto1/Proyecto1/template/index.html")
     plt=Template(doc_externo.read())
     doc_externo.close()
-    ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":ahora}) #contexto
-    #renderizar documento
+    ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":ahora,"temas":temas})
     documento=plt.render(ctx)
     return HttpResponse(documento)
 

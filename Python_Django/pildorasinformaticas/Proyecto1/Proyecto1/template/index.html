@@ -1,9 +1,24 @@
 <html>
-    <body>
-    <h1 style="color:red">
-    Hola alumnos, esta es nuestra primera vista con Django, desde una plantilla
+  <body>
+    <h1 style="color: red">
+      Hola alumnos, esta es nuestra primera vista con Django, desde una
+      plantilla
     </h1>
-    <p> el nombre del profesor es: {{nombre_persona}} {{apellido_persona}}</p>
-    <p>Estamos viendo el tema de las plantillas a dia: {{fecha.day}}</p> 
-    </body>
-    </html>
+    <p>el nombre del profesor es: {{nombre_persona.upper}} {{apellido_persona}}</p>
+    <p>Estamos viendo el tema de las plantillas a dia: {{fecha.day}}</p>
+    <p><strong>Temas del curso:</strong></p>
+    <p>
+        <ul>
+            {% comment %} esta parte funciona como un forEach de js  {% endcomment %}
+            {% if temas %}
+                {% for i in temas %} 
+                    <li> {{i}} </li>
+                {% endfor %}
+            {% else %}
+                <p>No hay elemtos que mostrar porque la lista esta vacia</p>
+            {% endif %}
+    </ul>
+        </p>
+
+  </body>
+</html>
