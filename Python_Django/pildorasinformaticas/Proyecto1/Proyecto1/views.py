@@ -17,7 +17,7 @@ def saludo(request): #primera vista
     doc_externo=open("D:/aprendizaje extra/python_django_principiante/Python_Django/pildorasinformaticas/Proyecto1/Proyecto1/template/index.html")
     plt=Template(doc_externo.read())
     doc_externo.close()
-    ctx=Context({"nombre_persona":nombre,"apellido_persona":apellido,"fecha":ahora}) #contexto
+    ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":ahora}) #contexto
     #renderizar documento
     documento=plt.render(ctx)
     return HttpResponse(documento)
